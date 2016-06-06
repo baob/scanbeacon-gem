@@ -7,6 +7,9 @@ module ScanBeacon
         sleep 0.2
         advertisements = CoreBluetooth::new_adverts
         advertisements.each do |scan|
+
+          puts "RAW: #{scan.inspect}"
+
           if scan[:service_uuid]
             advert = scan[:service_uuid] + scan[:data]
             keep_scanning = false if yield(advert, scan[:device], scan[:rssi], 0x03) == false
