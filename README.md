@@ -31,6 +31,10 @@ scanner.scan do |beacons|
   end
 end
 ```
+or, in an irb-freindly form
+```
+scanner.scan { |beacons|  beacons.each { |beacon| puts beacon.inspect } }
+```
 
 ## Set a specific scan cycle period
 ``` ruby
