@@ -2,12 +2,16 @@ module ScanBeacon
   class CoreBluetoothAdvertiser < GenericIndividualAdvertiser
 
     def initialize(opts = {})
+      puts "before CoreBluetoothAdvertiser init"
       super
+      puts "after CoreBluetoothAdvertiser init #{inspect}"
     end
 
     def ad=(value)
       @ad = value
+      puts "before CoreBluetoothAdvertiser#ad="
       CoreBluetooth.set_advertisement_data @ad
+      puts "after CoreBluetoothAdvertiser#ad="
     end
 
     def start(with_rotation = false)

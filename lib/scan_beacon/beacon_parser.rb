@@ -129,12 +129,21 @@ module ScanBeacon
       end
       ad[@power[:start]..@power[:end]] = [beacon.power].pack('c')
       length = ad.size
-      if @ad_type == AD_TYPE_SERVICE
-        "\x03\x03".force_encoding("ASCII-8BIT") + [beacon.service_uuid].pack("S<") + [length+1].pack('C') + BT_EIR_SERVICE_DATA + ad
+      final = if @ad_type == AD_TYPE_SERVICE
+        puts 'br 1'
+        x = "\x03\x03".force_encoding("ASCII-8BIT") + [beacon.service_uuid].pack("S<") + [length+1].pack('C') + BT_EIR_SERVICE_DATA + ad
+        puts 'br 1 after'
+        x
       elsif @ad_type == AD_TYPE_MFG
+        puts 'br 2'
         ad[0..1] = [beacon.mfg_id].pack("S<")
         [length+1].pack('C') + [AD_TYPE_MFG].pack('C') +  ad
       end
+
+      puts "in generate_ad, ad = #{ad.inspect}"
+      puts "in generate_ad, ad_type = #{@ad_type.inspect}"
+
+      final
     end
 
     def inspect
