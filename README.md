@@ -99,6 +99,18 @@ advertiser = ScanBeacon::DefaultAdvertiser.new(beacon: beacon)
 advertiser.start
 ...
 advertiser.stop
+
+# iBeacon (reverse engineered)
+beacon = ScanBeacon::Beacon.new(
+  ids: ["2F234454CF6D4A0FADF2F4911BA9FFA6", 11,11],
+  power: -59,
+  mfg_id: 0x004c,
+  beacon_type: :ibeacon
+)
+advertiser = ScanBeacon::DefaultAdvertiser.new(beacon: beacon)
+advertiser.start
+...
+advertiser.stop
 ```
 
 
