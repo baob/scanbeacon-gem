@@ -6,7 +6,7 @@ module ScanBeacon
       eddystone_url: "s:0-1=feaa,m:2-2=10,p:3-3:-41,i:4-21v",
       eddystone_tlm: "s:0-1=feaa,m:2-2=20,d:3-3,d:4-5,d:6-7,d:8-11,d:12-15",
       eddystone_eid: "s:0-1=feaa,m:2-2=30,p:3-3:-41,i:4-11",
-      ibeacon:       "s:0-1=4c00,m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
+      ibeacon:       "m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"
     }
     AD_TYPE_MFG = 0xff
     AD_TYPE_SERVICE = 0x03
